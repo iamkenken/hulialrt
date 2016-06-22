@@ -83,10 +83,10 @@ var mySwiper = myApp.swiper('.swiper-container', {
 // Handle Cordova Device Ready Event
 
 /*Local*/
-var api_url = 'http://hulinga.dev/api/v1';
+/*var api_url = 'http://hulinga.dev/api/v1';*/
 
 /*Dev*/
-/*var api_url = 'http://dev.alfafusion.com/snkrt-alrt/public/api/v1';*/
+var api_url = 'http://dev.alfafusion.com/hulinga/public/api/v1';
 
 $$(document).on('deviceready', function deviceIsReady() {
   document.body.style.display = "block";
@@ -148,20 +148,7 @@ $$(document).on('submit', '#loginForm', function(){
 
         /*$$('#menu-profile').trigger('click');
         $$('.p-name').text(localStorage.un);*/
-        localStorage.currentPage = 'homepage';
-        mainView.router.load({
-          template: myApp.templates.homeTemplate,
-          animatePages: true,
-          context: {
-            uname: localStorage.un,
-            name: localStorage.fname,
-            email: localStorage.email,
-            contact: localStorage.contact,
-            pass: localStorage.pass,
-            photo: localStorage.photo
-          },
-          reload: true,
-        });
+        showhome();
       }else{
         myApp.alert('Wrong username or password.', 'HULI ALERT');
       }
@@ -316,7 +303,7 @@ if(acctname == localStorage.fname && acctemail == localStorage.email && acctmobi
         $$('#acctmobile').val(localStorage.contact);
         myApp.alert('Successfully saved changes')
       }else{
-        $$('#logout').trigger('click');
+        myApp.alert(datas['error'])
       }
     });
   }
@@ -351,9 +338,11 @@ $$(document).on('click', '.signupshowpass', function(){
 });
 
 $$('#addplate').on('click', function(){
+  myApp.showIndicator();
     myApp.prompt('Plate Number', 'Add', function (value) {
         if(value != ''){
           $$.post(api_url+'/saveplate', {uid: localStorage.userid, plate: value,}, function (data) {
+            myApp.hideIndicator();
             var datas = JSON.parse(data);
             if(datas['status'] == 'OK'){
               myApp.alert('Plate number successfully added.');
@@ -372,7 +361,7 @@ $$('#addplate').on('click', function(){
     $$('.modal-text-input').addClass('uppercase');
 });
 
-$$('#showplate').on('click', function(){
+$$('.showplate').on('click', function(){
   if(localStorage.currentPage !== 'platepage')
   {
     getplates();

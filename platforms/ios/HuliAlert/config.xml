@@ -29,9 +29,9 @@
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
-    <name>HuliNga</name>
+    <name>HuliAlert</name>
     <description>
-        HuliNga App
+        HuliAlert App
     </description>
     <author email="kenneth.froyalde23@gmail.com" href="http://alfafusion.com">
         Alfafusion Team

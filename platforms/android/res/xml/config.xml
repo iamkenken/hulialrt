@@ -30,9 +30,9 @@
     <splash density="port-ldpi" src="res/screen/android/drawable-port-ldpi/screen.png" />
     <splash density="port-mdpi" src="res/screen/android/drawable-port-mdpi/screen.png" />
     <splash density="port-xhdpi" src="res/screen/android/drawable-port-xhdpi/screen.png" />
-    <name>HuliNga</name>
+    <name>HuliAlert</name>
     <description>
-        HuliNga App
+        HuliAlert App
     </description>
     <author email="kenneth.froyalde23@gmail.com" href="http://alfafusion.com">
         Alfafusion Team
